@@ -9,7 +9,7 @@ export function initialBuildTime({ logSlowFiles }: Props = {}): Plugin {
   let lastBuildTime: number | undefined
 
   let timeouts: Map<number, NodeJS.Timeout> = new Map()
-  let buildTimeLogTimeout = 3000
+  let buildTimeLogTimeout = 5000
   let initialBuildTimeLogged = false
 
   function startTimeout(time: number, cb: () => void) {
@@ -45,7 +45,7 @@ export function initialBuildTime({ logSlowFiles }: Props = {}): Plugin {
       logPatialBuildTime(deltaSec)
 
       startTimeout(buildTimeLogTimeout, () => {
-        if (initialBuildTime && lastPartialBuildTimeLogged) {
+        if (initialBuildTime) {
           console.log(`  Initial build time:  ${deltaSec}s`)
           initialBuildTimeLogged = true
         }
