@@ -4,7 +4,7 @@ type Props = {
   logSlowFiles?: boolean
 }
 
-export function initialBuildTime({ logSlowFiles }: Props): Plugin {
+export function initialBuildTime({ logSlowFiles }: Props = {}): Plugin {
   let initialBuildTime: number | undefined
   let lastBuildTime: number | undefined
 
