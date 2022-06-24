@@ -1,0 +1,24 @@
+{
+  "name": "vite-plugin-linaria-initial-build-time",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.prod.json",
+    "npm-publish": "pnpm run build && npm publish"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": "github:lucaslos/vite-plugin-linaria-initial-build-time",
+  "author": "Lucas Santos",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=14.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.9",
+    "typescript": "^4.6.4",
+    "vite": "^2.9.12"
+  }
+}
