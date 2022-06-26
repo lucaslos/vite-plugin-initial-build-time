@@ -27,9 +27,23 @@ export function initialBuildTime({ logSlowFiles }: Props = {}): Plugin {
     }
   }
 
+  let isDev = false
+
   return {
     name: 'initialBuildTime',
+    configResolved(config) {
+      isDev = config.command === 'serve'
+    },
+    buildStart() {
+      if (!isDev) {
+        initialBuildTime = Date.now()
+      }
+    },
     transform(_, id) {
+      if (!isDev) {
+        return
+      }
+
       if (initialBuildTimeLogged) {
         return
       }
@@ -65,7 +79,7 @@ export function initialBuildTime({ logSlowFiles }: Props = {}): Plugin {
 
       if (initialBuildTime) {
         console.log(
-          `Initial build time: ${(Date.now() - initialBuildTime) / 1000}s`
+          `Initial build time: ${(Date.now() - initialBuildTime) / 1000}s`,
         )
       }
     },
