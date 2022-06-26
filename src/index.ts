@@ -73,7 +73,7 @@ export function initialBuildTime({ logSlowFiles }: Props = {}): Plugin {
       return undefined
     },
     buildEnd() {
-      if (!initialBuildTimeLogged) return
+      if (isDev && !initialBuildTimeLogged) return
 
       clearTimeout(timeouts.get(buildTimeLogTimeout))
 
