@@ -79,7 +79,7 @@ export function initialBuildTime({ logSlowFiles }: Props = {}): Plugin {
 
       if (initialBuildTime) {
         console.log(
-          `Initial build time: ${(Date.now() - initialBuildTime) / 1000}s`,
+          `\n\nInitial build time: ${(Date.now() - initialBuildTime) / 1000}s\n`,
         )
       }
     },
